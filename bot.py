@@ -27,13 +27,4 @@ async def dm(interaction: discord.Interaction, user: discord.User, message: str)
     except discord.Forbidden:
         await interaction.response.send_message("I cannot send a DM to this user.", ephemeral=True)
 
-@bot.tree.command(name="embed")
-async def embed(interaction: discord.Interaction, title: str, description: str, color: str = "0x3498db"):
-    try:
-        embed_color = int(color, 16)
-        embed = discord.Embed(title=title, description=description, color=embed_color)
-        await interaction.response.send_message(embed=embed, ephemeral=True)
-    except ValueError:
-        await interaction.response.send_message("Invalid color format. Please use a hex code like '0x3498db'.", ephemeral=True)
-
 bot.run('')
